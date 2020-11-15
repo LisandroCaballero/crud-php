@@ -1,28 +1,34 @@
 <?php
 require_once "../modelos/Categoria.php";
 
-$categoria = new Categoria();
+$categoria=new Categoria();
+
 $idcategoria=isset($_POST["idcategoria"])? limpiarCadena($_POST["idcategoria"]):"";
 $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 
-switch ($_GET["op"]) {
-    case 'guardaryeditar' :
-        if (empty($idcategoria)) {
-            $rspta = $categoria->insertar($nombre, $descripcion);
-            echo $rspta ? "Categoria registrada" : "Categoria no se pudo registrar";
-        } else {
-            $rspta = $categoria->editar($idcategoria, $nombre, $descripcion);
+switch ($_GET["op"]){
+    case 'guardaryeditar':
+        if (empty($idcategoria)){
+            $rspta=$categoria->insertar($nombre,$descripcion);
+            echo $rspta ? "Categoría registrada" : "Categoría no se pudo registrar";
+        }
+        else {
+            $rspta=$categoria->editar($idcategoria,$nombre,$descripcion);
             echo $rspta ? "Categoría actualizada" : "Categoría no se pudo actualizar";
         }
         break;
+
     case 'desactivar':
-        $rspta = $categoria->desactivar($idcategoria);
+        $rspta=$categoria->desactivar($idcategoria);
         echo $rspta ? "Categoría Desactivada" : "Categoría no se puede desactivar";
         break;
+        break;
+
     case 'activar':
-        $rspta = $categoria->activar($idcategoria);
+        $rspta=$categoria->activar($idcategoria);
         echo $rspta ? "Categoría activada" : "Categoría no se puede activar";
+        break;
         break;
 
     case 'mostrar':
@@ -30,6 +36,8 @@ switch ($_GET["op"]) {
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
         break;
+        break;
+
     case 'listar':
         $rspta=$categoria->listar();
         //Vamos a declarar un array
@@ -55,6 +63,5 @@ switch ($_GET["op"]) {
         echo json_encode($results);
 
         break;
-
 }
-//Fin de las validaciones de acceso
+?>
