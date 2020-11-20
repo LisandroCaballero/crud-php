@@ -1,15 +1,15 @@
 <?php 
 //Ip de la pc servidor de base de datos
-define("DB_HOST","localhost");
+define("DB_HOST"," mysql-marcodigital.alwaysdata.net");
 
 //Nombre de la base de datos
-define("DB_NAME", "adventas");
+define("DB_NAME", "marcodigital_adventas");
 
 //Usuario de la base de datos
-define("DB_USERNAME", "root");
+define("DB_USERNAME", "219073_adventas");
 
 //Contraseña del usuario de la base de datos
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "izaTHK.B5H5uNVR");
 
 //definimos la codificación de los caracteres
 define("DB_ENCODE","utf8");
